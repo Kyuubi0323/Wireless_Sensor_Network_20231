@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<ProjectConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Settings>
+    <Version>1.1</Version>
+    <Affect>Document</Affect>
+  </Settings>
+  <Config />
+  <Documents>
+    <DocumentConfig>
+      <Name>Sheet1.SchDoc</Name>
+      <Id>KWVTYRHR</Id>
+      <Config />
+      <Results />
+    </DocumentConfig>
+  </Documents>
+  <Results />
+</ProjectConfig>
