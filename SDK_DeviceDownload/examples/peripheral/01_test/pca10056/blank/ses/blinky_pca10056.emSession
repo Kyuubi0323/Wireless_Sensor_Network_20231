@@ -1,0 +1,48 @@
+<!DOCTYPE CrossStudio_Session_File>
+<session>
+ <Bookmarks/>
+ <Breakpoints groups="Breakpoints" active_group="Breakpoints"/>
+ <ExecutionProfileWindow/>
+ <FrameBuffer/>
+ <Memory1/>
+ <Memory2/>
+ <Memory3/>
+ <Memory4/>
+ <Project>
+  <ProjectSessionItem path="blinky_pca10056"/>
+  <ProjectSessionItem path="blinky_pca10056;blinky_pca10056"/>
+  <ProjectSessionItem path="blinky_pca10056;blinky_pca10056;Application"/>
+  <ProjectSessionItem path="blinky_pca10056;blinky_pca10056;Board Definition"/>
+  <ProjectSessionItem path="blinky_pca10056;blinky_pca10056;None"/>
+  <ProjectSessionItem path="blinky_pca10056;blinky_pca10056;nRF_Drivers"/>
+  <ProjectSessionItem path="blinky_pca10056;blinky_pca10056;nRF_Libraries"/>
+  <ProjectSessionItem path="blinky_pca10056;blinky_pca10056;nRF_Log"/>
+  <ProjectSessionItem path="blinky_pca10056;blinky_pca10056;Segger Startup Files"/>
+ </Project>
+ <Register1/>
+ <Register2/>
+ <Register3/>
+ <Register4/>
+ <Threads>
+  <ThreadsWindow showLists=""/>
+ </Threads>
+ <TraceWindow>
+  <Trace enabled="Yes"/>
+ </TraceWindow>
+ <Watch1>
+  <Watches active="1" update="Never"/>
+ </Watch1>
+ <Watch2>
+  <Watches active="0" update="Never"/>
+ </Watch2>
+ <Watch3>
+  <Watches active="0" update="Never"/>
+ </Watch3>
+ <Watch4>
+  <Watches active="0" update="Never"/>
+ </Watch4>
+ <Files>
+  <SessionOpenFile windowGroup="DockEditLeft" x="29" y="17" useTextEdit="1" path="../../../main.c" left="0" selected="1" top="0" codecName="Default"/>
+ </Files>
+ <EMStudioWindow activeProject="blinky_pca10056" fileDialogDefaultFilter="*.c" autoConnectTarget="J-Link" buildConfiguration="Debug" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="" debugSearchPath="" autoConnectCapabilities="3199"/>
+</session>
