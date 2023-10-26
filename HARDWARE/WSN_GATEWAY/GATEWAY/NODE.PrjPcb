@@ -66,23 +66,6 @@ GenerateClassCluster=0
 DocumentUniqueId=ZPSUWCAR
 
 [Document2]
-DocumentPath=GATEWAY.BomDoc
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=
-
-[Document3]
 DocumentPath=..\..\..\..\..\Altium_Library\PCB lib\My Library.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -99,7 +82,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=YSBXSWOD
 
-[Document4]
+[Document3]
 DocumentPath=..\..\..\..\..\Altium_Library\schematic\My Library.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -116,8 +99,8 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=CURTBXSB
 
-[Document5]
-DocumentPath=..\..\..\..\..\Altium_Library\PCB lib\My Library_01.PcbLib
+[Document4]
+DocumentPath=..\..\..\..\..\Altium_Library\PCB lib\Main.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -132,6 +115,57 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=IWYCMDOX
+
+[Document5]
+DocumentPath=..\..\..\..\..\Altium_Library\schematic\Main.SchLib
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=WPPGVQXK
+
+[Document6]
+DocumentPath=Main.SchDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=IMQLIWVY
+
+[Document7]
+DocumentPath=Sensor.SchDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=VFTFLVYQ
 
 [Configuration1]
 Name=Sources

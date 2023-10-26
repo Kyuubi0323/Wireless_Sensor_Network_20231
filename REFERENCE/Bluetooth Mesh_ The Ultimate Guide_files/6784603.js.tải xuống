@@ -1,0 +1,27 @@
+/* a2feabc8e9dea55244d3da97d2993e088d6fdfd2 / 2023-10-20 12:19:48 +0000 */
+
+if (window._dcfg && window._dcfg.account_uid) {
+  console.error(`Double Drip script detected. Account '6784603' is overwriting account '${window._dcfg.account_uid}'.`);
+}
+
+var _dcq = _dcq || [];
+var _dcs = _dcs || {};
+_dcs.account = '6784603';
+window._dcfg = {"account_id":26670,"account_uid":6784603,"success":true,"env":"production","url":"www.novelbits.io","domain":"novelbits.io","enable_third_party_cookies":true,"eu_consent_check_timezone":true,"pond_id":"drip-production","campaigns":[{"id":361909,"public_id":739797076},{"id":183913,"public_id":837935013},{"id":464439,"public_id":131608529},{"id":465059,"public_id":97014076},{"id":222792,"public_id":769050543},{"id":466548,"public_id":1753644},{"id":362321,"public_id":964109191},{"id":63493,"public_id":49998549}],"forms":[{"account_id":26670,"blacklisted_urls":"","button_text":"Sign Up","description":"","headline":"Bluetooth GATT: Custom Services \u0026 Characteristics Source Code","hide_on_mobile":false,"id":74999,"is_blacklist_enabled":false,"is_whitelist_enabled":false,"is_widget_enabled":false,"public_id":30872912,"teaser":null,"submit_text":"Submitting...","whitelisted_urls":"","blacklist":[],"whitelist":[]},{"account_id":26670,"blacklisted_urls":"","button_text":"Sign Up","description":"","headline":"Download: nRF52840 USB dongle tutorial (part 3)","hide_on_mobile":false,"id":146970,"is_blacklist_enabled":false,"is_whitelist_enabled":false,"is_widget_enabled":false,"public_id":476980723,"teaser":null,"submit_text":"Submitting...","whitelisted_urls":"","blacklist":[],"whitelist":[]},{"account_id":26670,"blacklisted_urls":"","button_text":"Sign Up","description":"","headline":"Download: nRF52840 USB dongle tutorial (part 2)","hide_on_mobile":false,"id":146419,"is_blacklist_enabled":false,"is_whitelist_enabled":false,"is_widget_enabled":false,"public_id":162679592,"teaser":null,"submit_text":"Submitting...","whitelisted_urls":"","blacklist":[],"whitelist":[]},{"account_id":26670,"blacklisted_urls":null,"button_text":"Send me the Wireshark Profile","description":"","headline":"Form #24","hide_on_mobile":false,"id":227768,"is_blacklist_enabled":false,"is_whitelist_enabled":false,"is_widget_enabled":false,"public_id":193773306,"teaser":null,"submit_text":"Submitting...","whitelisted_urls":null,"blacklist":[],"whitelist":[]},{"account_id":26670,"blacklisted_urls":null,"button_text":"Send me the project code","description":"","headline":"Form #24","hide_on_mobile":false,"id":226614,"is_blacklist_enabled":false,"is_whitelist_enabled":false,"is_widget_enabled":false,"public_id":547805894,"teaser":null,"submit_text":"Submitting...","whitelisted_urls":null,"blacklist":[],"whitelist":[]},{"account_id":26670,"blacklisted_urls":"","button_text":"Sign Up","description":"","headline":"Bluetooth Low Energy (BLE) Lightbulb application source code","hide_on_mobile":false,"id":124788,"is_blacklist_enabled":false,"is_whitelist_enabled":false,"is_widget_enabled":false,"public_id":146773875,"teaser":null,"submit_text":"Submitting...","whitelisted_urls":"","blacklist":[],"whitelist":[]}],"goals":[{"id":18017,"public_id":840154316,"url":""},{"id":9472,"public_id":826054527,"url":""},{"id":9471,"public_id":183524529,"url":""},{"id":11619,"public_id":850006469,"url":""}],"url_triggers":[{"rule_id":269428,"trigger_type":"visited_page","action":"Visited a page","id":685742847,"properties":{"url":"https://novelbits.io/thank-you-code/ ","trigger_id":685742847}},{"rule_id":269430,"trigger_type":"visited_page","action":"Visited a page","id":591787330,"properties":{"url":"https://novelbits.io/introduction-to-bluetooth-low-energy-book/ ","trigger_id":591787330}},{"rule_id":269431,"trigger_type":"visited_page","action":"Visited a page","id":380822104,"properties":{"url":"https://novelbits.io/bluetooth-industry-report/ ","trigger_id":380822104}}],"product_triggers":[{"trigger_type":"viewed_product"}],"lead_settings":{"product_benefits_path":"","pricing_path":"https://novelbits.io/academy/ ","careers_path":""},"enable_session_tracking":false};
+
+  (function() {
+    var dc = document.createElement('script');
+    dc.type = 'text/javascript'; dc.async = true;
+    dc.src = 'https://d14jnfavjicsbe.cloudfront.net/client.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(dc, s);
+  })();
+
+  (function () {
+    var sleeknoteScriptTag = document.createElement("script");
+    sleeknoteScriptTag.type = "text/javascript";
+    sleeknoteScriptTag.charset = "utf-8";
+    sleeknoteScriptTag.src = ("//sleeknotecustomerscripts.sleeknote.com/87897.js");
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(sleeknoteScriptTag, s);
+  })();
