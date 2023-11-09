@@ -1,3 +1,10 @@
+<<<<<<< HEAD
 Record=TopLevelDocument|FileName=Main.SchDoc|SheetNumber=2
 Record=NoMainPathDocument|SourceDocument=Main.SchDoc|FileName=POWER.SchDoc|SheetNumber=1
 Record=NoMainPathDocument|SourceDocument=Main.SchDoc|FileName=Sensor.SchDoc|SheetNumber=3
+=======
+Record=TopLevelDocument|FileName=Display.SchDoc|SheetNumber=4
+Record=NoMainPathDocument|SourceDocument=Display.SchDoc|FileName=Main.SchDoc|SheetNumber=2
+Record=NoMainPathDocument|SourceDocument=Display.SchDoc|FileName=POWER.SchDoc|SheetNumber=1
+Record=NoMainPathDocument|SourceDocument=Display.SchDoc|FileName=Sensor.SchDoc|SheetNumber=3
+>>>>>>> b77c3e756110cd00a94314acaee853be7a0456d5
