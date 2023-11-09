@@ -5,18 +5,15 @@
 
   <Header>### uVision Project, (C) Keil Software</Header>
 
-  <Targets>
-    <Target>
+  <Targets>    <Target>
       <TargetName>nrf52840_xxaa</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <TargetOption>
-        <TargetCommonOption>
-          <Device>nRF52840_xxAA</Device>
+        <TargetCommonOption>          <Device>nRF52840_xxAA</Device>
           <Vendor>Nordic Semiconductor</Vendor>
           <PackID>NordicSemiconductor.nRF_DeviceFamilyPack.8.40.3</PackID>
-          <PackURL>http://developer.nordicsemi.com/nRF51_SDK/pieces/nRF_DeviceFamilyPack/</PackURL>
-          <Cpu>IROM(0x00000000,0x100000) IRAM(0x20000000,0x40000) CPUTYPE("Cortex-M4") FPU2 CLOCK(64000000) ELITTLE</Cpu>
+          <PackURL>http://developer.nordicsemi.com/nRF51_SDK/pieces/nRF_DeviceFamilyPack/</PackURL>          <Cpu>IROM(0x00000000,0x100000) IRAM(0x20000000,0x40000) CPUTYPE("Cortex-M4") FPU2 CLOCK(64000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
           <FlashDriverDll></FlashDriverDll>
@@ -84,6 +81,8 @@
             <UserProg2Name></UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
             <UserProg2Dos16Mode>0</UserProg2Dos16Mode>
+            <nStopA1X>0</nStopA1X>
+            <nStopA2X>0</nStopA2X>
           </AfterMake>
           <SelectedForBatchBuild>0</SelectedForBatchBuild>
           <SVCSIdString></SVCSIdString>
@@ -144,11 +143,9 @@
             <RestoreFunctions>0</RestoreFunctions>
             <RestoreToolbox>1</RestoreToolbox>
             <RestoreTracepoints>0</RestoreTracepoints>
-            <RestoreSysVw>1</RestoreSysVw>
-            <UsePdscDebugDescription>1</UsePdscDebugDescription>
-          </Target>
+            <RestoreSysVw>1</RestoreSysVw>            <UsePdscDebugDescription>1</UsePdscDebugDescription>          </Target>
           <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>6</TargetSelection>
+          <TargetSelection>-1</TargetSelection>
           <SimDlls>
             <CpuDll></CpuDll>
             <CpuDllArguments></CpuDllArguments>
@@ -178,10 +175,6 @@
           <Flash2>Segger\JL2CM3.dll</Flash2>
           <Flash3></Flash3>
           <Flash4></Flash4>
-          <pFcarmOut></pFcarmOut>
-          <pFcarmGrp></pFcarmGrp>
-          <pFcArmRoot></pFcArmRoot>
-          <FcArmLst>0</FcArmLst>
         </Utilities>
         <TargetArmAds>
           <ArmAdsMisc>
@@ -228,6 +221,7 @@
             <useUlib>1</useUlib>
             <EndSel>0</EndSel>
             <uLtcg>0</uLtcg>
+            <nSecure>0</nSecure>
             <RoSelD>3</RoSelD>
             <RwSelD>3</RwSelD>
             <CodeSel>0</CodeSel>
@@ -362,6 +356,10 @@
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
             <useXO>0</useXO>
+            <v6Lang>0</v6Lang>
+            <v6LangP>0</v6LangP>
+            <vShortEn>0</vShortEn>
+            <vShortWch>0</vShortWch>
             <VariousControls>
               <MiscControls>--reduce_paths</MiscControls>
               <Define> BOARD_PCA10056 BSP_DEFINES_ONLY CONFIG_GPIO_AS_PINRESET FLOAT_ABI_HARD NRF52840_XXAA __HEAP_SIZE=8192 __STACK_SIZE=8192</Define>
@@ -405,161 +403,95 @@
           </LDads>
         </TargetArmAds>
       </TargetOption>
-      <Groups>
-        <Group>
+      <Groups>        <Group>
           <GroupName>Application</GroupName>
-          <Files>
-            <File>
+          <Files>            <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\main.c</FilePath>
-            </File>
-            <File>
+              <FilePath>..\..\..\main.c</FilePath>            </File>            <File>
               <FileName>sdk_config.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\config\sdk_config.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
+              <FilePath>..\config\sdk_config.h</FilePath>            </File>          </Files>
+        </Group>        <Group>
           <GroupName>Board Definition</GroupName>
-          <Files>
-            <File>
+          <Files>            <File>
               <FileName>boards.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\components\boards\boards.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
+              <FilePath>..\..\..\..\..\..\components\boards\boards.c</FilePath>            </File>          </Files>
+        </Group>        <Group>
           <GroupName>nRF_Drivers</GroupName>
-          <Files>
-            <File>
+          <Files>            <File>
               <FileName>nrfx_atomic.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\modules\nrfx\soc\nrfx_atomic.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
+              <FilePath>..\..\..\..\..\..\modules\nrfx\soc\nrfx_atomic.c</FilePath>            </File>          </Files>
+        </Group>        <Group>
           <GroupName>nRF_Libraries</GroupName>
-          <Files>
-            <File>
+          <Files>            <File>
               <FileName>app_error.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\components\libraries\util\app_error.c</FilePath>
-            </File>
-            <File>
+              <FilePath>..\..\..\..\..\..\components\libraries\util\app_error.c</FilePath>            </File>            <File>
               <FileName>app_error_handler_keil.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\components\libraries\util\app_error_handler_keil.c</FilePath>
-            </File>
-            <File>
+              <FilePath>..\..\..\..\..\..\components\libraries\util\app_error_handler_keil.c</FilePath>            </File>            <File>
               <FileName>app_error_weak.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\components\libraries\util\app_error_weak.c</FilePath>
-            </File>
-            <File>
+              <FilePath>..\..\..\..\..\..\components\libraries\util\app_error_weak.c</FilePath>            </File>            <File>
               <FileName>app_util_platform.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\components\libraries\util\app_util_platform.c</FilePath>
-            </File>
-            <File>
+              <FilePath>..\..\..\..\..\..\components\libraries\util\app_util_platform.c</FilePath>            </File>            <File>
               <FileName>nrf_assert.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\components\libraries\util\nrf_assert.c</FilePath>
-            </File>
-            <File>
+              <FilePath>..\..\..\..\..\..\components\libraries\util\nrf_assert.c</FilePath>            </File>            <File>
               <FileName>nrf_atomic.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\components\libraries\atomic\nrf_atomic.c</FilePath>
-            </File>
-            <File>
+              <FilePath>..\..\..\..\..\..\components\libraries\atomic\nrf_atomic.c</FilePath>            </File>            <File>
               <FileName>nrf_balloc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\components\libraries\balloc\nrf_balloc.c</FilePath>
-            </File>
-            <File>
+              <FilePath>..\..\..\..\..\..\components\libraries\balloc\nrf_balloc.c</FilePath>            </File>            <File>
               <FileName>nrf_fprintf.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\external\fprintf\nrf_fprintf.c</FilePath>
-            </File>
-            <File>
+              <FilePath>..\..\..\..\..\..\external\fprintf\nrf_fprintf.c</FilePath>            </File>            <File>
               <FileName>nrf_fprintf_format.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\external\fprintf\nrf_fprintf_format.c</FilePath>
-            </File>
-            <File>
+              <FilePath>..\..\..\..\..\..\external\fprintf\nrf_fprintf_format.c</FilePath>            </File>            <File>
               <FileName>nrf_memobj.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\components\libraries\memobj\nrf_memobj.c</FilePath>
-            </File>
-            <File>
+              <FilePath>..\..\..\..\..\..\components\libraries\memobj\nrf_memobj.c</FilePath>            </File>            <File>
               <FileName>nrf_ringbuf.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\components\libraries\ringbuf\nrf_ringbuf.c</FilePath>
-            </File>
-            <File>
+              <FilePath>..\..\..\..\..\..\components\libraries\ringbuf\nrf_ringbuf.c</FilePath>            </File>            <File>
               <FileName>nrf_strerror.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\components\libraries\strerror\nrf_strerror.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
+              <FilePath>..\..\..\..\..\..\components\libraries\strerror\nrf_strerror.c</FilePath>            </File>          </Files>
+        </Group>        <Group>
           <GroupName>nRF_Log</GroupName>
-          <Files>
-            <File>
+          <Files>            <File>
               <FileName>nrf_log_frontend.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\components\libraries\log\src\nrf_log_frontend.c</FilePath>
-            </File>
-            <File>
+              <FilePath>..\..\..\..\..\..\components\libraries\log\src\nrf_log_frontend.c</FilePath>            </File>            <File>
               <FileName>nrf_log_str_formatter.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\components\libraries\log\src\nrf_log_str_formatter.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>::CMSIS</GroupName>
-        </Group>
-        <Group>
-          <GroupName>::Device</GroupName>
-        </Group>
-      </Groups>
-    </Target>
-  </Targets>
-
-  <RTE>
-    <packages>
-      <package name="CMSIS" url="http://www.keil.com/pack/" vendor="ARM" version="5.6.0">
-        <targetInfos>
-          <targetInfo name="nrf52840_xxaa" versionMatchMode="fixed"/>
-        </targetInfos>
-      </package>
-      <package name="nRF_DeviceFamilyPack" url="http://developer.nordicsemi.com/nRF51_SDK/pieces/nRF_DeviceFamilyPack/" vendor="NordicSemiconductor" version="8.40.3">
-        <targetInfos>
-          <targetInfo name="nrf52840_xxaa" versionMatchMode="fixed"/>
-        </targetInfos>
-      </package>
-    </packages>
-    <apis/>
-    <components>
-      <component Cclass="CMSIS" Cgroup="CORE" Cvendor="ARM" Cversion="5.3.0" condition="CMSIS Core">
-        <package name="CMSIS" url="http://www.keil.com/pack/" vendor="ARM" version="5.6.0"/>
-        <targetInfos>
-          <targetInfo name="nrf52840_xxaa" versionMatchMode="fixed"/>
-        </targetInfos>
-      </component>
-      <component Cclass="Device" Cgroup="Startup" Cvendor="NordicSemiconductor" Cversion="8.40.3" condition="nRF5x Series CMSIS Device">
-        <package name="nRF_DeviceFamilyPack" url="http://developer.nordicsemi.com/nRF51_SDK/pieces/nRF_DeviceFamilyPack/" vendor="NordicSemiconductor" version="8.40.3"/>
-        <targetInfos>
-          <targetInfo name="nrf52840_xxaa"/>
-        </targetInfos>
-      </component>
-    </components>
-    <files/>
-  </RTE>
-
+              <FilePath>..\..\..\..\..\..\components\libraries\log\src\nrf_log_str_formatter.c</FilePath>            </File>          </Files>
+        </Group>      </Groups>
+    </Target>  </Targets><RTE>
+  <packages>
+    <filter>
+      <targetInfos/>
+    </filter>    <package name="CMSIS" url="http://www.keil.com/pack/" vendor="ARM" version="5.6.0">
+      <targetInfos>        <targetInfo name="nrf52840_xxaa" versionMatchMode="fixed"/>      </targetInfos>
+    </package>
+    <package name="nRF_DeviceFamilyPack" url="http://developer.nordicsemi.com/nRF51_SDK/pieces/nRF_DeviceFamilyPack/" vendor="NordicSemiconductor" version="8.40.3">
+      <targetInfos>        <targetInfo name="nrf52840_xxaa" versionMatchMode="fixed"/>      </targetInfos>
+    </package>  </packages>
+  <apis/>
+  <components>    <component Cclass="CMSIS" Cgroup="CORE" Cvendor="ARM" Cversion="5.3.0" condition="CMSIS Core">
+      <package name="CMSIS" url="http://www.keil.com/pack/" vendor="ARM" version="5.6.0"/>
+      <targetInfos>        <targetInfo name="nrf52840_xxaa" versionMatchMode="fixed"/>      </targetInfos>
+    </component>
+    <component Cclass="Device" Cgroup="Startup" Cvendor="NordicSemiconductor" Cversion="8.40.3" condition="nRF5x Series CMSIS Device">
+      <package name="nRF_DeviceFamilyPack" url="http://developer.nordicsemi.com/nRF51_SDK/pieces/nRF_DeviceFamilyPack/" vendor="NordicSemiconductor" version="8.40.3"/>
+      <targetInfos>        <targetInfo name="nrf52840_xxaa"/>      </targetInfos>
+    </component>  </components>
+  <files>  </files>
+</RTE>
 </Project>
