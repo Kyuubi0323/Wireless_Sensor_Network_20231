@@ -1,5 +1,0 @@
-Record=TopLevelDocument|FileName=CONN.SchDoc|SheetNumber=1
-Record=SheetSymbol|SourceDocument=CONN.SchDoc|Designator=U_Display|SchDesignator=U_Display|FileName=Display.SchDoc|SheetNumber=4|SymbolType=Normal|RawFileName=Display.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
-Record=SheetSymbol|SourceDocument=CONN.SchDoc|Designator=U_Main|SchDesignator=U_Main|FileName=Main.SchDoc|SheetNumber=2|SymbolType=Normal|RawFileName=Main.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
-Record=SheetSymbol|SourceDocument=CONN.SchDoc|Designator=U_Power|SchDesignator=U_Power|FileName=Power.SchDoc|SheetNumber=5|SymbolType=Normal|RawFileName=Power.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
-Record=SheetSymbol|SourceDocument=CONN.SchDoc|Designator=U_Sensor|SchDesignator=U_Sensor|FileName=Sensor.SchDoc|SheetNumber=3|SymbolType=Normal|RawFileName=Sensor.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
