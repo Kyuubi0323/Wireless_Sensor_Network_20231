@@ -60,6 +60,8 @@ dkms.conf
 *.Dat
 *.LOG
 *__Previews/
+*.PrjPcbStructure
+
 
 *Project Logs for WSN_NODE/
 *Project Logs for WSN/
