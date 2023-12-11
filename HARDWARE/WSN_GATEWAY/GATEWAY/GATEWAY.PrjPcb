@@ -140,11 +140,7 @@ AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
 AnnotateSuffix=
 AnnotateScope=All
-<<<<<<< HEAD
 AnnotateOrder=-1
-=======
-AnnotateOrder=1
->>>>>>> b77c3e756110cd00a94314acaee853be7a0456d5
 DoLibraryUpdate=1
 DoDatabaseUpdate=1
 ClassGenCCAutoEnabled=1
@@ -161,11 +157,7 @@ AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
 AnnotateSuffix=
 AnnotateScope=All
-<<<<<<< HEAD
 AnnotateOrder=-1
-=======
-AnnotateOrder=2
->>>>>>> b77c3e756110cd00a94314acaee853be7a0456d5
 DoLibraryUpdate=1
 DoDatabaseUpdate=1
 ClassGenCCAutoEnabled=1
@@ -175,8 +167,6 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=VFTFLVYQ
 
-<<<<<<< HEAD
-=======
 [Document8]
 DocumentPath=Display.SchDoc
 AnnotationEnabled=1
@@ -211,7 +201,6 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=SUVJXGXV
 
->>>>>>> b77c3e756110cd00a94314acaee853be7a0456d5
 [Configuration1]
 Name=Sources
 ParameterCount=0
