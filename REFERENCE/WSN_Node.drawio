@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-12-15T04:04:29.953Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0" etag="2KjrAsJmCJlGDVomWmIS" version="22.1.9" type="github">
+<mxfile host="app.diagrams.net" modified="2023-12-15T04:08:27.297Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0" etag="ETCLUIvSCKfSCL7xkoua" version="22.1.9" type="github">
   <diagram name="Page-1" id="N7261xUqCjl8Fi72w4pC">
-    <mxGraphModel dx="4016" dy="1282" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2472" dy="427" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -45,7 +45,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Hw3azUIHg1GW80chGdwD-11" value="SENSOR&lt;br&gt;Ds18b20" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+        <mxCell id="Hw3azUIHg1GW80chGdwD-11" value="SENSOR&lt;br&gt;LM35" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
           <mxGeometry x="-1165.5" y="688" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="Hw3azUIHg1GW80chGdwD-12" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;startArrow=classic;endSize=8;startSize=8;rounded=0;" parent="1" edge="1">
@@ -104,7 +104,7 @@
           <mxGeometry x="-123" y="654" width="124" height="180" as="geometry" />
         </mxCell>
         <mxCell id="Hw3azUIHg1GW80chGdwD-34" value="TABLET" style="whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=1;" parent="1" vertex="1">
-          <mxGeometry x="-841" y="654" width="124" height="180" as="geometry" />
+          <mxGeometry x="-853" y="651" width="124" height="180" as="geometry" />
         </mxCell>
         <mxCell id="Hw3azUIHg1GW80chGdwD-36" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;startArrow=classic;endSize=8;startSize=8;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Hw3azUIHg1GW80chGdwD-18" target="Hw3azUIHg1GW80chGdwD-19" edge="1">
           <mxGeometry width="100" relative="1" as="geometry">
