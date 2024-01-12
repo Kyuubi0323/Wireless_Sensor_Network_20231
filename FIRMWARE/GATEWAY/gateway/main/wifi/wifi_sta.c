@@ -40,12 +40,18 @@
 #include "wifi/wifi_sta.h"
 #include "wifi/wifi_ap.h"
 #include "cfg/common.h"
+#include "interface/button.h"
+#include "interface/led.h"
+#include "fota/fota.h"
+#include "mesh/ble_mesh_user.h"
+#include "spiffs/spiffs.h"
+#include "web_server/web_server.h"
 
-static const char *TAG = "WIFI STATION";
-extern esp_mqtt_client_handle_t client;
-extern gateway_mode_t mode;
-extern gateway_cfg_mode_t cfg_mode;
+static const char *TAG = "WIFI STA";
 static EventGroupHandle_t wifi_event_group;
+extern status_red_t status_red;
+extern status_blue_t status_blue;
+extern esp_mqtt_client_handle_t client;
 
 static void wifi_event_handler(void *arg, esp_event_base_t event_base, int32_t event_id, void *event_data)
 {

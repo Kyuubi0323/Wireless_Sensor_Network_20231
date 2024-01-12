@@ -39,6 +39,12 @@
 #include "wifi/wifi_sta.h"
 #include "wifi/wifi_ap.h"
 #include "cfg/common.h"
+#include "interface/button.h"
+#include "interface/led.h"
+#include "fota/fota.h"
+#include "mesh/ble_mesh_user.h"
+#include "spiffs/spiffs.h"
+#include "web_server/web_server.h"
 
 static const char *TAG = "COMMON";
 
@@ -52,9 +58,17 @@ esp_err_t mqtt_parse_data(char *mqtt_data, mqtt_obj_t *mqtt_obj)
     {
         if (cur_elem->string)
         {
-            // const char *cur_str = cur_elem->string;
-            // if (strcmp(cur_str, "action") == 0)
-            //     memcpy(mqtt_obj->action, cur_elem->valuestring, strlen(cur_elem->valuestring) + 1);
+            const char *cur_str = cur_elem->string;
+            if (strcmp(cur_str, "action") == 0)
+                memcpy(mqtt_obj->action, cur_elem->valuestring, strlen(cur_elem->valuestring) + 1);
+            else if (strcmp(cur_str, "url") == 0)
+                memcpy(mqtt_obj->url, cur_elem->valuestring, strlen(cur_elem->valuestring) + 1);
+            else if (strcmp(cur_str, "state") == 0)
+                mqtt_obj->state = cur_elem->valueint;
+            else if (strcmp(cur_str, "unicast_addr") == 0)
+                mqtt_obj->unicast_addr = cur_elem->valueint;
+            else if (strcmp(cur_str, "timeout") == 0)
+                mqtt_obj->timeout = cur_elem->valueint;
         }
     }
     cJSON_Delete(root);

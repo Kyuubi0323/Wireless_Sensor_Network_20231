@@ -19,7 +19,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MQTT_BROKER "mqtt://test.mosquitto.org/"
+#define MQTT_BROKER "broker.hivemq.com"
+#define MQTT_USERNAME "device_01"
+#define MQTT_ID "device_01"
 
 void mqtt_client_start(void);
 

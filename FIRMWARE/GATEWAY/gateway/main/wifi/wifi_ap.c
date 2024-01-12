@@ -40,6 +40,12 @@
 #include "wifi/wifi_sta.h"
 #include "wifi/wifi_ap.h"
 #include "cfg/common.h"
+#include "interface/button.h"
+#include "interface/led.h"
+#include "fota/fota.h"
+#include "mesh/ble_mesh_user.h"
+#include "spiffs/spiffs.h"
+#include "web_server/web_server.h"
 
 
 static const char *TAG = "WIFI AP";

@@ -40,22 +40,45 @@
 #include "wifi/wifi_sta.h"
 #include "wifi/wifi_ap.h"
 #include "cfg/common.h"
+#include "interface/button.h"
+#include "interface/led.h"
+#include "fota/fota.h"
+#include "mesh/ble_mesh_user.h"
+#include "spiffs/spiffs.h"
+#include "web_server/web_server.h"
 
 
 static const char *TAG = "MQTT";
+RingbufHandle_t mqtt_ring_buf;
+esp_mqtt_client_handle_t client;
+extern char version[10];
+extern char topic_commands_set[50];
+extern char topic_commands_get[50];
+extern char topic_commands_status[50];
+extern char topic_commands_heartbeat[50];
+extern char topic_commands_network[50];
+extern char topic_commands_process[50];
+extern char topic_commands_version[50];
+extern char topic_commands_fota[50];
+extern char topic_commands_provision[50];
+extern status_red_t status_red;
+extern status_blue_t status_blue;
+extern node_info_t nodes[MAXIMUM_NODE];
+extern esp_ble_mesh_client_t config_client;
+extern esp_ble_mesh_client_t onoff_client;
 
 static void cJSON_mqtt_handler(esp_mqtt_event_handle_t *event_data)
 {   esp_mqtt_event_handle_t event = event_data;
-    esp_mqtt_client_handle_t client = event->client;
+    client = event->client;
     int msg_id;
-    cJSON *value = cJSON_CreateObject();
+    // cJSON *value = cJSON_CreateObject();
     cJSON *root = cJSON_CreateObject();
-    cJSON_AddNumberToObject(root, "Device_id", 18);
-    cJSON_AddNumberToObject(root, "Temperature", 23);
-    cJSON_AddStringToObject(root, "Status", "Active");
-    cJSON_AddStringToObject(value, "HardwareVersion", "1.1");
-    cJSON_AddStringToObject(value, "FirmwareVersion", "1.2");
-    cJSON_AddItemToObject(root, "Details", value);
+    cJSON_AddNumberToObject(root, "temp", 18);
+    cJSON_AddNumberToObject(root, "battery", 1000);
+    cJSON_AddStringToObject(root, "status", "Active");
+    cJSON_AddNumberToObject(root, "rssi", 20);
+    cJSON_AddNumberToObject(root, "snr", 12);
+// cJSON_AddItemToObject(root, "Details", value);
     char *payload = cJSON_Print(root);
     msg_id = esp_mqtt_client_publish(client, "/gateway/response", payload, 0, 1, 1);
     ESP_LOGI(TAG, "sent publish successful, msg_id=%d", msg_id);
@@ -68,13 +91,22 @@ static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_
 {
     ESP_LOGD(TAG, "Event dispatched from event loop base=%s, event_id=%d", base, event_id);
     esp_mqtt_event_handle_t event = event_data;
-    esp_mqtt_client_handle_t client = event->client;
+    client = event->client;
     int msg_id;
     switch ((esp_mqtt_event_id_t)event_id)
     {
     case MQTT_EVENT_CONNECTED:
     {
+        char ver_json[50] = {0};
+        status_red = NORMAL_MODE;
+        
         ESP_LOGI(TAG, "MQTT event connected");
+        esp_mqtt_client_subscribe(client, topic_commands_set, 0);
+        esp_mqtt_client_subscribe(client, topic_commands_fota, 0);
+        esp_mqtt_client_subscribe(client, topic_commands_get, 0);
+        esp_mqtt_client_subscribe(client, topic_commands_provision, 0);
+        sprintf(ver_json, "{\"action\":\"version\",\"firm_ver\":\"%s\"}", version);
+        esp_mqtt_client_publish(client, topic_commands_version, ver_json, strlen(ver_json), 0, 0);
         msg_id = esp_mqtt_client_subscribe(client, "/gateway/response", 0);
         ESP_LOGI(TAG, "sent subscribe successful, msg_id=%d", msg_id);
         cJSON_mqtt_handler(event);
@@ -93,7 +125,10 @@ static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_
         ESP_LOGI(TAG, "MQTT event published, msg_id=%d", event->msg_id);
         break;
     case MQTT_EVENT_DATA:
-    {
+    {   
+        UBaseType_t res = xRingbufferSend(mqtt_ring_buf, event->data, event->data_len, portMAX_DELAY);
+        if(res != pdTRUE)
+            ESP_LOGE(TAG, "Failed to send item\n");
         ESP_LOGI(TAG, "MQTT_EVENT_DATA");
         printf("TOPIC=%.*s\r\n", event->topic_len, event->topic);
         printf("DATA=%.*s\r\n", event->data_len, event->data);
@@ -107,40 +142,73 @@ static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_
         break;
     }
 }
+void mqtt_client_task(void *param)
+{
+    char *mess_recv = NULL;
+    size_t mess_size = 0;
+    mqtt_obj_t mqtt_obj;
+    esp_ble_mesh_client_common_param_t common;
+    while(1)
+    {
+        mess_recv = (char*)xRingbufferReceive(mqtt_ring_buf, &mess_size, portMAX_DELAY);
+        if (mess_recv)
+        {
+            mess_recv[mess_size] = '\0';
+            ESP_LOGI(TAG, "Recv payload: %s", mess_recv);
+            memset(&mqtt_obj, 0, sizeof(mqtt_obj));
+            mqtt_parse_data(mess_recv, &mqtt_obj);
+            if (strcmp(mqtt_obj.action, "set") == 0)
+            {
+                ble_mesh_onoff_set_state(&common, (uint16_t)mqtt_obj.unicast_addr, onoff_client.model, (uint8_t)mqtt_obj.state);
+            }
+            else if (strcmp(mqtt_obj.action, "upgrade") == 0)
+            {
+                uint32_t free_heap_size = 0, min_free_heap_size = 0;
+                free_heap_size = esp_get_free_heap_size();
+                min_free_heap_size = esp_get_minimum_free_heap_size();
+                ESP_LOGW(TAG, "Free heap size = %d, Min free heap size = %d", free_heap_size, min_free_heap_size);
+                ble_mesh_deinit();
+                xTaskCreate(&fota_task, "fota_task", 8192, mqtt_obj.url, 8, NULL);
+            }
+            else if (strcmp(mqtt_obj.action, "open") == 0)
+            {
+                status_blue = PROVISIONING;
+            }
+            else if (strcmp(mqtt_obj.action, "close") == 0)
+            {
+                status_blue = NOT_STATE;
+            }
+            else if (strcmp(mqtt_obj.action, "delete") == 0)
+            {
+                esp_ble_mesh_client_common_param_t common = {0};
+                node_info_t *node = ble_mesh_get_node_info_with_unicast(mqtt_obj.unicast_addr);
+                ble_mesh_config_node_reset(&common, node, config_client.model);
+            }
+            else if (strcmp(mqtt_obj.action, "set_timeout") == 0)
+            {
+        
+            }
+            vRingbufferReturnItem(mqtt_ring_buf, (void*)mess_recv);
+        }
+    }
+}
 
 void mqtt_client_start(void)
-{
+{   
+    uint8_t broker[50] = {0};
+    ESP_LOGI(TAG, "MQTT init");
+    ESP_LOGI(TAG, "Broker: %s", MQTT_BROKER);
+    sprintf((char*)broker, "mqtt://%s", MQTT_BROKER);
+    mqtt_ring_buf = xRingbufferCreate(4096, RINGBUF_TYPE_NOSPLIT);
+    if (mqtt_ring_buf == NULL)
+        ESP_LOGE(TAG, "Failed to create ring buffer");
     esp_mqtt_client_config_t mqtt_cfg = {
         .broker.address.uri = MQTT_BROKER,
+        .session.keepalive = 60,
     };
-    #if CONFIG_BROKER_URL_FROM_STDIN
-    char line[128];
-
-    if (strcmp(mqtt_cfg.broker.address.uri, "FROM_STDIN") == 0) {
-        int count = 0;
-        printf("Please enter url of mqtt broker\n");
-        while (count < 128) {
-            int c = fgetc(stdin);
-            if (c == '\n') {
-                line[count] = '\0';
-                break;
-            } else if (c > 0 && c < 127) {
-                line[count] = c;
-                ++count;
-            }
-            vTaskDelay(10 / portTICK_PERIOD_MS);
-        }
-        mqtt_cfg.broker.address.uri = line;
-        printf("Broker url: %s\n", line);
-    } else {
-        ESP_LOGE(TAG, "Configuration mismatch: wrong broker url");
-        abort();
-    }
-    #endif /* CONFIG_BROKER_URL_FROM_STDIN */
-
-    esp_mqtt_client_handle_t client = esp_mqtt_client_init(&mqtt_cfg);
-    /* The last argument may be used to pass data to the event handler, in this example mqtt_event_handler */
+    client = esp_mqtt_client_init(&mqtt_cfg);
     esp_mqtt_client_register_event(client, ESP_EVENT_ANY_ID, mqtt_event_handler, NULL);
     esp_mqtt_client_start(client);
+    xTaskCreate(&mqtt_client_task, "mqtt_task", 4096, NULL, 9, NULL);
 }
 
