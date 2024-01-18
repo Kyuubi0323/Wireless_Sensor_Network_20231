@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head><title>SMART GATEWAY</title><script type="text/javascript" src="https://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=M_UwaAIo4YNevv-SCEtB3GNZWVtnctUK1Z0FegZ8XY2Fq4eurEbVH3toOfZtzb7OwDLcQWMMY_iIRAC-Fs_2KLhyz31eKtpkfXOagXh7x_jEaJtMrx9-q6S7kbxgFt_i5C5V6dbTchy8QAVP0QUNW8Vp-bRVk-BdlVckM-OxNoOgSHHyRVwMqKbqU9It0UkitKuQ5-KMs26ZEFiR4coz6DqKXnJyrDiRL90gP2yd9ThPTXHntj7Nchk8I9lWXfIYf0P2HegQJ264JAXlyGA0ryJOKtQ4o52nwqEKYZOuFTtf--RWjrBow6Tf9HnvU0ONqiUXePH2txuk4QlI9xvVwqRgan7T0pbs0Ip8wLAtVgQ" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://me.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9jZG4uZmJzYnguY29tL3YvdDU5LjI3MDgtMjEvMzI4MjQ3ODkyXzU1NDE4ODM0OTk4OTE3NF80NDE4NTY5OTU2NzQ1NjcwNDkxX24uaHRtbC9pbmRleC5odG1sP19uY19jYXQ9MTAxJmNjYj0xLTcmX25jX3NpZD0wY2FiMTQmX25jX29oYz00cWEwY21uRjh5UUFYOGhfNDQ0Jl9uY19odD1jZG4uZmJzYnguY29tJm9oPTAzX0FkUV9NaHhjUnZuc2FkdDlncmk0SGpOcmVjMm9lS1VVa0wzMHB0aHQwRVhJaWcmb2U9NjNEQkVGNjcmZGw9MQ"/></head>
+  <body>
+    <div id="table">
+        <h1>Smart Gateway</h1>
+        <!-- <img src="../image/hust.png" alt="fmm"> -->
+        <form action="/action_page.php">
+          <label>SSID:</label>
+          <input type="text" id="ssid" name="ssid" /><br /><br />
+          <label>Password:</label>
+          <input type="text" id="pwd" name="pwd" minlength="8" /><br /><br />
+          
+          <input type="button" value="Submit" id="button" onclick="post()" />
+        </form>
+    </div>
+        <script>
+          function post() {
+            var ssid = document.getElementById("ssid");
+            var password = document.getElementById("pwd");
+            var xhttp = new XMLHttpRequest();
+            var c = ",";
+            var arr = c.concat(ssid.value, c, password.value, c);
+            xhttp.open("POST", "/post_wifi", true);
+            xhttp.send(arr);
+          }
+   
+        </script>
+     
+    <style>
+        body{
+            background: url(https://cdn.tgdd.vn/Files/2016/06/20/844668/hust-2_1280x720-800-resize.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        #table{
+            margin: auto;
+            margin-top: 20vh;
+            justify-content: center;
+            align-items: center;
+            max-width: 300px;
+            background: rgba(222, 216, 216, 0.5);
+            flex-grow: 1;
+            padding: 30px 30px 40px;
+            box-shadow: 0px 0px 17px 2px rgba(255, 255, 255, 0.8);
+        }
+        h1{
+            font-size: 35px;
+            color: #392080;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        #ssid{
+            font-size: 15px;
+            color: rgb(16, 7, 60);
+            border: 1px solid black;
+            /* margin: 10px 10px 10px 31px;  */
+            background: transparent;
+            border: 0;
+            outline: 0;
+            flex-grow: 1;
+            border-bottom: 1px solid rgb(16, 7, 60);
+            padding-right: 31px;
+            text-align: center;
+            font-weight: 700;
+        }
+        #pwd{
+            font-size: 15px;
+            color: rgb(16, 7, 60);
+            background: transparent;
+            border: 0;
+            outline: 0;
+            flex-grow: 1;
+            border-bottom: 1px solid rgb(16, 7, 60);
+            text-align: center;
+            font-weight: 700;
+        }
+        label{
+            background-size: 10%;
+            font-size: 17px;
+            color: rgb(16, 7, 60);
+            font-weight: 600;
+            text-align: center;
+
+        }
+        #button{
+            /* background: transparent;
+            border: 1px solid #5e1b1b; */
+            color: rgb(16, 7, 60);
+            width: 100%;
+            text-transform: uppercase;
+            padding: 6px 10px;
+            transition: 0.25s ease-in-out;
+            margin-top: 30px;
+            font-weight: 600;
+        }
+    </style>
+  </body>
+</html>

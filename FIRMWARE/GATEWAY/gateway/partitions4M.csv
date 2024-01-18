@@ -1,0 +1,9 @@
+# ESP-IDF Partition Table,,,,,
+# Name,   Type, SubType, Offset,  Size, Flags
+nvs,      data, nvs,0x9000          ,  16K,
+otadata,  data, ota,,  8K,
+phy_init, data, phy,,  4K,
+#ble_mesh,data,nvs,  ,  24K,
+ota_0,    app,  ota_0,,  1800K,
+ota_1,    app,  ota_1,,  1800K,
+storage,  data, spiffs,,  128K, 
