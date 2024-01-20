@@ -1,0 +1,22 @@
+<mxfile host="app.diagrams.net" modified="2024-01-20T18:44:16.656Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0" etag="6ng_ug-YhqG3pyl_zruK" version="22.1.21" type="github">
+  <diagram name="Trang-1" id="1QO2ivPM9eGkJM-EcB1Y">
+    <mxGraphModel dx="1002" dy="577" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Z5t2Ctffni-CQSF2CJ5J-1" value="Start" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=0;" parent="1" vertex="1">
+          <mxGeometry x="340" y="70" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Z5t2Ctffni-CQSF2CJ5J-2" value="StartTimer" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="340" y="350" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Z5t2Ctffni-CQSF2CJ5J-3" value="&lt;b&gt;MASTER&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="5" y="8" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Z5t2Ctffni-CQSF2CJ5J-4" value="Fixed GPS &amp;amp;&amp;amp; !StartTimer" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="345" y="180" width="110" height="100" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
