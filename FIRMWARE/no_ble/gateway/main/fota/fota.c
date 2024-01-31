@@ -45,6 +45,7 @@
 
 #include "spiffs/spiffs.h"
 #include "web_server/web_server.h"
+#define OTA_URL_SIZE 256
 
 static const char *TAG = "FOTA";
 extern esp_mqtt_client_handle_t client;
@@ -63,8 +64,8 @@ extern char topic_commands_provision[50];
 extern status_red_t status_red;
 extern status_blue_t status_blue;
 
-extern const uint8_t github_cert_pem_start[] asm("_binary_git_ota_pem_start");
-extern const uint8_t github_cert_pem_end[] asm("_binary_git_ota_pem_end");
+extern const uint8_t github_cert_pem_start[] asm("_binary_git_ota_crt_start");
+extern const uint8_t github_cert_pem_end[] asm("_binary_git_ota_crt_end");
 
 esp_err_t ota_event_handler(esp_http_client_event_t *evt)
 {
@@ -110,6 +111,7 @@ void fota_task(void *param)
         .keep_alive_enable = true,
         .cert_pem = (char *)github_cert_pem_start,
     };
+  
     esp_err_t ret = esp_https_ota(&ota_cfg);
     if (ret == ESP_OK)
     {
