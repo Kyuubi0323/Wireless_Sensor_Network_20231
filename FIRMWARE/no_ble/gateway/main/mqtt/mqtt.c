@@ -31,7 +31,7 @@
 #include "driver/uart.h"
 #include "driver/spi_master.h"
 #include "cjson/cJSON.h"
-
+#include "fota/fota.h"
 
 #include "mqtt/mqtt.h"
 #include "smartcfg/smartcfg.h"
@@ -63,15 +63,14 @@ extern char topic_commands_TB[50];
 extern status_red_t status_red;
 extern status_blue_t status_blue;
 extern node_t node[10];
+extern RTC_NOINIT_ATTR int gateway_mode_flag;
 
-node[0].temp = 1800;
 
 
 static void cJSON_mqtt_handler(esp_mqtt_event_handle_t *event_data)
 {   esp_mqtt_event_handle_t event = event_data;
     client = event->client;
-    int msg_id;
-    
+   
     // cJSON *value = cJSON_CreateObject();
     cJSON *root = cJSON_CreateObject();
     cJSON_AddNumberToObject(root, "temp", node[0].temp);
@@ -80,8 +79,7 @@ static void cJSON_mqtt_handler(esp_mqtt_event_handle_t *event_data)
     cJSON_AddNumberToObject(root, "rssi", node[0].rssi);
     cJSON_AddNumberToObject(root, "snr", 12);
     char *payload = cJSON_Print(root);
-    msg_id = esp_mqtt_client_publish(client, topic_commands_data, payload, 0, 1, 1);
-    ESP_LOGI(TAG, "sent publish successful, msg_id=%d", msg_id);
+    esp_mqtt_client_publish(client, topic_commands_data, payload, 0, 1, 1);
     cJSON_Delete(root);
     if (payload != NULL)
     free(payload);
@@ -161,6 +159,10 @@ void mqtt_client_task(void *param)
             {
                 //ble_mesh_onoff_set_state(&common, (uint16_t)mqtt_obj.unicast_addr, onoff_client.model, (uint8_t)mqtt_obj.state);
             }
+             if (strcmp(mqtt_obj.action, "get") == 0)
+            {
+               
+            }
             else if (strcmp(mqtt_obj.action, "upgrade") == 0)
             {
                 uint32_t free_heap_size = 0, min_free_heap_size = 0;
@@ -168,7 +170,7 @@ void mqtt_client_task(void *param)
                 min_free_heap_size = esp_get_minimum_free_heap_size();
                 ESP_LOGW(TAG, "Free heap size = %d, Min free heap size = %d", free_heap_size, min_free_heap_size);
                 //ble_mesh_deinit();
-                //xTaskCreate(&fota_task, "fota_task", 8192, mqtt_obj.url, 8, NULL);
+                xTaskCreate(&fota_task, "fota_task", 8192, mqtt_obj.url, 8, NULL);
             }
             else if (strcmp(mqtt_obj.action, "open") == 0)
             {
@@ -188,6 +190,18 @@ void mqtt_client_task(void *param)
             else if (strcmp(mqtt_obj.action, "set_timeout") == 0)
             {
         
+            }
+            else if (strcmp(mqtt_obj.action, "cfg") == 0)
+            {
+                ESP_LOGI(TAG, "Trigger Smartconfig");
+                gateway_mode_flag = SMARTCONFIG_MODE;
+                esp_restart();
+            }
+            else if (strcmp(mqtt_obj.action, "AP") == 0)
+            {
+                ESP_LOGI(TAG, "Trigger SoftAP");
+                gateway_mode_flag = WIFI_SOFTAP_MODE;
+                esp_restart();
             }
             vRingbufferReturnItem(mqtt_ring_buf, (void*)mess_recv);
         }

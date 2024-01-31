@@ -69,7 +69,7 @@ void wifi_init_softap(void)
 {
     uint8_t softap_ssid[50] = {0};
     uint8_t gateway_mac_addr[6] = {0};
-//   esp_efuse_mac_get_default(gateway_mac_addr);
+    esp_efuse_mac_get_default(gateway_mac_addr);
     sprintf((char *)softap_ssid, "%s_%02X%02X", WIFI_AP_SSID, gateway_mac_addr[4], gateway_mac_addr[5]);
     esp_wifi_stop();
     esp_smartconfig_stop();
@@ -94,4 +94,5 @@ void wifi_init_softap(void)
     ESP_ERROR_CHECK(esp_wifi_start());
 
     ESP_LOGI(TAG, "wifi_init_softap finished. SSID:%s. Channel:%d", wifi_config.ap.ssid, WIFI_AP_CHANNEL);
+    server = start_webserver();
 }
