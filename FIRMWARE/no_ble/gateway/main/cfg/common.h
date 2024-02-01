@@ -22,6 +22,7 @@
 #define MESH_MODE 11
 #define SMARTCONFIG_MODE 20
 #define WIFI_SOFTAP_MODE 31
+#define MAIN_MODE 40
 
 typedef enum
 {

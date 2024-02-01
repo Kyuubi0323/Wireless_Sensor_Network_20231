@@ -34,11 +34,15 @@
 #include "interface/button.h"
 #include "interface/led.h"
 #include "cjson/cJSON.h"
-
+#include "ble_mesh/ble_mesh.h"
 
 #include "spiffs/spiffs.h"
 #include "web_server/web_server.h"
 
+#include "esp_bt.h"
+#include "esp_bt_main.h"
+#include "esp_gap_ble_api.h"
+#include "esp_bt_device.h"
 #include "esp_ble_mesh_defs.h"
 #include "esp_ble_mesh_common_api.h"
 #include "esp_ble_mesh_networking_api.h"
@@ -46,9 +50,9 @@
 #include "esp_ble_mesh_config_model_api.h"
 #include "esp_ble_mesh_lighting_model_api.h"
 #include "esp_ble_mesh_generic_model_api.h"
-#include "ble_mesh_example_init.h"
+//#include "ble_mesh_example_init.h"
 
-
+#define CID_ESP             0x02E5
 #define MSG_SEND_TTL        3
 #define MSG_SEND_REL        false
 #define MSG_TIMEOUT         0
@@ -133,7 +137,7 @@ char topic_commands_TB[50] = "MANDev/cmd/pub";
 status_red_t status_red = LOCAL_MODE;
 status_blue_t status_blue = POWER_ON_PROVISIONING;
 TaskHandle_t prov_dev_handle;
-uint8_t dev_uuid[16];
+//uint8_t dev_uuid[16];
 TimerHandle_t hb_gateway_timer;
 esp_mqtt_client_handle_t client;
 RingbufHandle_t webserver_ring_buf;
@@ -341,6 +345,7 @@ static esp_err_t ble_mesh_init(void)
     }
 
     ESP_LOGI(TAG, "BLE Mesh Sensor client initialized");
+    
     return ESP_OK;
 }
 
@@ -364,21 +369,21 @@ void app_main(void)
     xTaskCreate(&led_red_task, "led_red_task", 2048, NULL, 5, NULL);
     xTaskCreate(&led_blue_task, "led_blue_task", 2048, NULL, 5, NULL);
     xTaskCreate(&button_task, "button_task", 2048, NULL, 15, NULL);
-    wifi_init();
-
+    //wifi_init();
     err = bluetooth_init();
-    if (err != ESP_OK) {
+    if (err != ESP_OK) 
+    {
         ESP_LOGE(TAG, "esp32_bluetooth_init failed (err %d)", err);
         return;
     }
-
     ble_mesh_get_dev_uuid(dev_uuid);
-
     /* Initialize the Bluetooth Mesh Subsystem */
     err = ble_mesh_init();
-    if (err != ESP_OK) {
+    if (err != ESP_OK)
+    {
         ESP_LOGE(TAG, "Bluetooth mesh init failed (err %d)", err);
     }
+  
 
     if (gateway_mode_flag == SMARTCONFIG_MODE)
     {
@@ -420,6 +425,10 @@ void app_main(void)
             }
         }
     }
+    else if (gateway_mode_flag == MESH_MODE)
+    {
+        
+    }
     else
     {
         wifi_config_t wifi_cfg = {
@@ -436,9 +445,12 @@ void app_main(void)
             ESP_LOGI(TAG, "Wifi configuration already stored in flash partition called NVS");
             ESP_LOGI(TAG, "%s", wifi_cfg.sta.ssid);
             ESP_LOGI(TAG, "%s", wifi_cfg.sta.password);
-            wifi_sta(wifi_cfg, WIFI_MODE_STA);
-            mqtt_client_start();
+            //wifi_sta(wifi_cfg, WIFI_MODE_STA);
+            //mqtt_client_start();
+            
             //gateway_mesh_init();
+           
+            
         }
     }
    
